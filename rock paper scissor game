@@ -1,0 +1,38 @@
+import random
+# First define a function to play game
+def play_game():
+    options = ['rock', 'paper', 'scissor']
+    computer_move = random.choice(options)
+    user_move = input("Enter your move: ")
+
+    # Check for invalid user input
+    if user_move not in options:
+        print("Invalid move. Please choose rock, paper, or scissor.")
+        return  # Exit the current game
+    
+    if user_move == computer_move:
+        print("You both played",user_move," It's a tie.")
+    elif computer_move == 'rock':
+        if user_move == 'paper':
+            print("You played",user_move,"and computer played",computer_move,"You win!")
+        else:
+            print(f"You played",user_move<" and computer played",computer_move,".You lose.")
+    elif computer_move == 'paper':
+        if user_move == 'scissor':
+            print("You played", user_move,"and computer played",computer_move,"You win!")
+        else:
+            print("You played",user_move,"and computer played",computer_move,".You lose.")
+    elif computer_move == 'scissor':
+        if user_move == 'rock':
+            print("You played",user_move,"and computer played",computer_move,".You win!")
+        else:
+            print("You played",user_move,"and computer played",computer_move,"You lose.")
+
+play_game()
+# ask user whether he wants to  play again or not?
+play_again = input("Do you want to play again? (y/n): ")
+if play_again =='y':
+    play_game()
+else:
+    print("Thanks for playing!")
+            
