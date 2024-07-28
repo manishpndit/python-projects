@@ -1,0 +1,46 @@
+# First create an empty dictionary
+contact={}
+def display_contact():   #define a function to display contact
+    print("Name\tContact Number")
+    for key in contact:
+        print("{}\t{}".format(key,contact.get(key)))
+
+while True:
+    # Give choices to the user what he wants to perform
+    choice= int(input("1.Add new contact\n2.Search contact\n3.Display contact\n4.update contact\n 5.Delete contact\n6.Exit\nEnter your choice: "))
+    if choice == 1:
+        name=input("Enter contact name: ")
+        phone=int(input("Enter phone number: "))
+        contact[name]=phone
+    elif choice ==2:
+        search_name=input("Enter contact name: ")   # Define a function to search contact
+        if search_name in contact:
+            print(search_name,"'s contact number is: ",contact[search_name])
+        else:
+            print("Name is not in contact book")
+    elif choice ==3:
+        if not contact:    # If there was no contact in the contact book(means the contact book is empty)
+            print("No contact to display")
+        else:
+            display_contact()
+    elif choice ==4:
+        update_contact=input("Enter the contact to be updated: ")   # Defines a function to edit contact
+        if update_contact in contact:
+            phone =input("Enter mobile number: ")
+            contact[update_contact]= phone
+            print("contact updated")
+            display_contact()
+        else:
+            print("Name is not in contact book")
+    elif choice ==5:
+        delete_contact=input("Enter the contact to be deleted: ")   # Define a function to delete contact
+        if delete_contact in contact:
+            confirm=input("Do you really want to delete this contct y/n?")
+            if confirm=='y':
+                contact.pop(delete_contact)
+                print("contact deleted")
+            display_contact()
+        else:
+            print("Name is not in the contact book")
+    else:
+        break  # if user chooses different choice than available one,the code breaks and exit
